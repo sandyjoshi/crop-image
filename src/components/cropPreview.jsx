@@ -25,8 +25,8 @@ export default class cropPreviewComponent extends React.Component {
     }
 
     var styleHorizontal = {
-        'width':377.5,
-        'height':225,
+        'width': this.props.cropWidth,
+        'height': this.props.cropHeight,
         verticalAlign : 'top'
     }
 
@@ -38,8 +38,8 @@ export default class cropPreviewComponent extends React.Component {
             scale={2}
             width = {512}
             height = {512}
-            cropWidth = {377.5}
-            cropHeight = {225}
+            cropWidth = {this.props.cropWidth}
+            cropHeight = {this.props.cropHeight}
             image={this.props.image} />
         <input type="button" onClick={this.handleSave} style={buttonStyle} value="Preview" />
         <img src={this.state.preview} style={styleHorizontal} />
