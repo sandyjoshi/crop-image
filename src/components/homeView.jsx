@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import FileUploader from './fileUploader';
+import CropPreview from './cropPreview';
 
 
 const mapStateToProps = (state) => ({
@@ -25,7 +26,7 @@ export default class HomeView extends React.Component {
   constructor() {
     super();
     this.state = {
-      src: ''
+      src: 'public/default.jpg'
     }
   };
 
@@ -34,8 +35,7 @@ export default class HomeView extends React.Component {
       <div>
         <div>Image Cropping App</div>
         <FileUploader />
-        <img style={previewStyle} src={this.state.src}/>
-
+        <CropPreview image={ this.state.src } />
         <div></div>
 
       </div>
