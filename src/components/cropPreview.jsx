@@ -21,7 +21,8 @@ export default class cropPreviewComponent extends React.Component {
 
   render() {
     var buttonStyle = {
-        verticalAlign : 'top'
+        verticalAlign : 'top',
+        margin : 10
     }
 
     var styleHorizontal = {
@@ -32,17 +33,29 @@ export default class cropPreviewComponent extends React.Component {
 
     return(
       <div>
-        <div>Select , Crop & Upload</div>
         <CropComponent
             ref="cropper"
-            scale={2}
-            width = {512}
-            height = {512}
+            scale={this.props.scale}
+            width = {this.props.width}
+            height = {this.props.height}
             cropWidth = {this.props.cropWidth}
             cropHeight = {this.props.cropHeight}
             image={this.props.image} />
-        <input type="button" onClick={this.handleSave} style={buttonStyle} value="Preview" />
-        <img src={this.state.preview} style={styleHorizontal} />
+        <div className="crop-details-section">
+          <div className="croped-preview-container">
+            <div className="header">Preview</div>
+            <img src={this.state.preview} style={styleHorizontal} />
+          </div>
+          <div>
+            <input type="button" onClick={this.handleSave} style={buttonStyle} value="Generate Preview" />
+          </div>
+          <div> &lt;&lt;----------- </div>
+          <br/>
+          <ol className="inst-list">
+            <li className="inst-item" >change crop area in left section </li>
+            <li className="inst-item">Hit "Generate Preview" Button & see Preview</li>
+          </ol>
+        </div>
       </div>
     )
   }

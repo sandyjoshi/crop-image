@@ -1,2 +1,43 @@
 @import 'reset';
 @import 'fileUploader';
+
+#app{
+	text-align: center;
+}
+
+.app-header{
+	padding: 10px;
+	background-color: gray;
+	color: white;
+	font-size: 36px;
+    text-align: left;
+}
+
+.app-content{
+	padding: 10px;
+	display: inline-block;
+	text-align: left;
+}
+
+.crop-details-section{
+	vertical-align: top;
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.inst-list{
+	padding-left: 20px;
+}
+
+.inst-item{
+	list-style-type: decimal;
+}
+
+.croped-preview-container{
+
+	.header{
+		padding: 0 0 10px 0;
+	}
+
+}
+

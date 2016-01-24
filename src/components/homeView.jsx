@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const previewSize = {
   width : 512,
-  height : 512
+  height : 512,
+  scale : 2
 }
 
 export default class HomeView extends React.Component {
@@ -26,7 +27,7 @@ export default class HomeView extends React.Component {
   constructor() {
     super();
     this.state = {
-      src: 'public/default.jpg'
+      src: ''
     }
   };
 
@@ -54,15 +55,23 @@ export default class HomeView extends React.Component {
 
     return(
       <div>
-        <div>Image Cropping App</div>
-        <FileUploader />
-        <CropPreviewSection image={ this.state.src } {...horizontal} {...previewSize} />
-        <hr/>
-        <CropPreviewSection image={ this.state.src } {...vertical} {...previewSize} />
-        <hr/>
-        <CropPreviewSection image={ this.state.src } {...horizontalSmall} {...previewSize} />
-        <hr/>
-        <CropPreviewSection image={ this.state.src } {...gallery} {...previewSize} />
+        <header className="app-header">Image Cropping App</header>
+        <div className="app-content">
+          <FileUploader />
+          { (this.state.src ) ? (
+            <div>
+              <CropPreviewSection image={ this.state.src } {...horizontal} {...previewSize} />
+              <hr/>
+              <CropPreviewSection image={ this.state.src } {...vertical} {...previewSize} />
+              <hr/>
+              <CropPreviewSection image={ this.state.src } {...horizontalSmall} {...previewSize} />
+              <hr/>
+              <CropPreviewSection image={ this.state.src } {...gallery} {...previewSize} />
+            </div>
+          ) : (<div/>)
+          }
+        </div>
+
       </div>
     )
   }
