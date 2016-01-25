@@ -58,19 +58,25 @@ export default class HomeView extends React.Component {
   handleUpload(e){
     e.preventDefault();
 
+    let imagesArray = [];
+
     let horizontal = this.refs.horizontal.getCroppedImage();
     this.props.imageActions.cropHorizontal(horizontal);
+    imagesArray.push(this.props.horizontalUrl)
 
     let vertical = this.refs.vertical.getCroppedImage();
     this.props.imageActions.cropVertical(vertical);
+    imagesArray.push(this.props.verticalUrl)
 
     let smallHorizontal = this.refs.smallHorizontal.getCroppedImage();
     this.props.imageActions.cropSmallHorizontal(smallHorizontal);
+    imagesArray.push(this.props.horizontalSmallUrl)
 
     let gallery = this.refs.gallery.getCroppedImage();
     this.props.imageActions.cropGallery(gallery);
+    imagesArray.push(this.props.gallaryUrl)
 
-    this.props.imageActions.uploadImage();
+    this.props.imageActions.uploadImage(imagesArray);
   }
 
 

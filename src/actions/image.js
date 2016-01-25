@@ -37,10 +37,25 @@ export default {
     };
   },
 
-  uploadImage() {
-    return {
-      type: imageConstants.UPLOAD_IMAGES,
-    };
-  },
+  uploadImage(imagesArray){
+
+    return new Promise((resolve, reject) => {
+
+      let imageFormData = new FormData();
+      imageFormData.append('images', imagesArray);
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', '/image/upload', true);
+
+      xhr.onload = function () {
+        if (this.status == 200) {
+          resolve(this.response);
+        } else {
+          reject(this.statusText);
+        }
+      };
+
+      xhr.send(imageFormData);
+    });
+  }
 
 };

@@ -42,8 +42,4 @@ export default createReducer(initialState, {
     });
   },
 
-  [imageConstants.UPLOAD_IMAGES] : (state, payload) => {
-    return state;
-  },
-
 });
