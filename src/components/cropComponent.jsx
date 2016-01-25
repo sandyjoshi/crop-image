@@ -195,6 +195,8 @@ var CropComponent = React.createClass({
         if (this.state.moved) {
             this.setState({moved: false});
         }
+        let croppedImage = this.getCroppedImage();
+        this.props.action(croppedImage);
     },
 
     handleMouseMove(e) {

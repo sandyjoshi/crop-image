@@ -9,14 +9,15 @@ export default class cropPreviewComponent extends React.Component {
   constructor() {
     super();
     this.handleSave = this.handleSave.bind(this);
-    this.state = {
-      preview: ''
-    }
   };
 
   handleSave(data) {
-      var img = this.refs.cropper.getCroppedImage();
-      this.setState({preview: img });
+    var img = this.refs.cropper.getCroppedImage();
+    this.setState({preview: img });
+  }
+
+  getCroppedImage(data) {
+    return this.refs.cropper.getCroppedImage();
   }
 
   render() {
@@ -40,11 +41,12 @@ export default class cropPreviewComponent extends React.Component {
             height = {this.props.height}
             cropWidth = {this.props.cropWidth}
             cropHeight = {this.props.cropHeight}
+            action = { this.props.action }
             image={this.props.image} />
         <div className="crop-details-section">
           <div className="croped-preview-container">
             <div className="header">Preview</div>
-            <img src={this.state.preview} style={styleHorizontal} />
+            <img src={this.props.preview} style={styleHorizontal} />
           </div>
           <div>
             <input type="button" onClick={this.handleSave} style={buttonStyle} value="Generate Preview" />
