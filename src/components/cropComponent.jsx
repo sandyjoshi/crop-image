@@ -85,7 +85,6 @@ var CropComponent = React.createClass({
         dom.width = this.props.cropWidth * this.props.scale;
         dom.height = this.props.cropHeight * this.props.scale;
 
-        context.globalCompositeOperation = 'destination-over';
         context.save();
         context.drawImage(mainCanvas,
             this.state.pos.x, this.state.pos.y, this.props.cropWidth , this.props.cropHeight ,

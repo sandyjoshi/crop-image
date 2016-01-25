@@ -15,6 +15,34 @@ export default class FileUploader extends React.Component {
     }
   };
 
+  uploadImage(imageFile){
+
+    return new Promise((resolve, reject) => {
+
+      let imageFormData = new FormData();
+      imageFormData.append('horizontal', imageFile);
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', '/image/upload', true);
+
+      xhr.onload = function () {
+        if (this.status == 200) {
+          resolve(this.response);
+        } else {
+          reject(this.statusText);
+        }
+      };
+
+      xhr.send(imageFormData);
+    });
+  }
+
+
+  handleSubmit(e){
+    e.preventDefault();
+
+    this.uploadImage(this.state.src);
+  }
+
   onFileSelect(e){
     e.preventDefault();
 
@@ -49,13 +77,13 @@ export default class FileUploader extends React.Component {
 
   render() {
     return(
-      <div className="file-uploader">
+      <form className="file-uploader" enctype="multipart/form-data" onSubmit={this.handleSubmit.bind(this)}>
         <div className="line">Select image, crop it and upload.</div>
         <input type='file' onChange={this.onFileSelect} />
         <div className="error-message line">{this.state.errMsg}</div>
         <div className="line">{this.state.sucessMsg}</div>
-        <input type="button" value="Crop & Upload" />
-      </div>
+        <input type="submit" value="Crop & Upload" />
+      </form>
     )
   }
 }
