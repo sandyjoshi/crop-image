@@ -58,36 +58,37 @@ router.post('/upload',  function (req, res) {
   var form = new multiparty.Form();
   form.parse(req, (err, fields, files) => {
 
-    var filesPromise = [];
+    if(fields) {
+      var filesPromise = [];
 
-    var filteredImage = getBase64Data( fields.horizontal[0] );
-    filteredImage.name = 'horizontal' ;
-    filesPromise.push( writeData(filteredImage) );
+      var filteredImage = getBase64Data( fields.horizontal[0] );
+      filteredImage.name = 'horizontal' ;
+      filesPromise.push( writeData(filteredImage) );
 
-    filteredImage = getBase64Data( fields.vertical[0] );
-    filteredImage.name = 'vertical' ;
-    filesPromise.push( writeData(filteredImage) );
+      filteredImage = getBase64Data( fields.vertical[0] );
+      filteredImage.name = 'vertical' ;
+      filesPromise.push( writeData(filteredImage) );
 
-    filteredImage = getBase64Data( fields.small_horizontal[0] );
-    filteredImage.name = 'small_horizontal' ;
-    filesPromise.push( writeData(filteredImage) );
+      filteredImage = getBase64Data( fields.small_horizontal[0] );
+      filteredImage.name = 'small_horizontal' ;
+      filesPromise.push( writeData(filteredImage) );
 
-    filteredImage = getBase64Data( fields.gallery[0] );
-    filteredImage.name = 'gallery' ;
-    filesPromise.push( writeData(filteredImage) );
+      filteredImage = getBase64Data( fields.gallery[0] );
+      filteredImage.name = 'gallery' ;
+      filesPromise.push( writeData(filteredImage) );
 
-    Promise.all(filesPromise).then(function(values) {
-      let prefix = '/uploadedImages/' + counter ;
-      res.json({
-        id : counter ,
-        vertical :  prefix + '/vertical.png',
-        horizontal : prefix + '/horizontal.png',
-        small_horizontal : prefix + '/small_horizontal.png',
-        gallery : prefix + '/gallery.png',
+      Promise.all(filesPromise).then(function(values) {
+        let prefix = '/uploadedImages/' + counter ;
+        res.json({
+          id : counter ,
+          vertical :  prefix + '/vertical.png',
+          horizontal : prefix + '/horizontal.png',
+          small_horizontal : prefix + '/small_horizontal.png',
+          gallery : prefix + '/gallery.png',
+        });
+        counter++;
       });
-      counter++;
-    });
-
+    }
   });
 
 });
