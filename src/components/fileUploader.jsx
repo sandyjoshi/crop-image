@@ -76,13 +76,13 @@ export default class FileUploader extends React.Component {
 
   render() {
     return(
-      <form className="file-uploader" onSubmit={this.handleSubmit.bind(this)}>
+      <div className="file-uploader" >
         <div className="line">Select image, crop it and upload.</div>
         <input type='file' onChange={this.onFileSelect} />
         <div className="error-message line">{this.state.errMsg}</div>
         <div className="line">{this.state.successMsg}</div>
-        <input type="submit" value="Crop & Upload" />
-      </form>
+        <input type="button" onClick={this.handleSubmit.bind(this)} value="Crop & Upload" />
+      </div>
     )
   }
 }
