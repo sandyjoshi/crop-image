@@ -42,7 +42,11 @@ export default {
     return new Promise((resolve, reject) => {
 
       let imageFormData = new FormData();
-      imageFormData.append('images', imagesArray);
+      imageFormData.append('horizontal', imagesArray[0]);
+      imageFormData.append('vertical', imagesArray[1]);
+      imageFormData.append('small_horizontal', imagesArray[2]);
+      imageFormData.append('gallery', imagesArray[3]);
+
       var xhr = new XMLHttpRequest();
       xhr.open('post', '/image/upload', true);
 

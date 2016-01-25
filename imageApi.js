@@ -59,13 +59,26 @@ router.post('/upload',  function (req, res) {
   form.parse(req, (err, fields, files) => {
 
     var filesPromise = [];
-    var rawImages = fields.images[0] ;
+    // var rawImages = fields.images[0] ;
 
-    for( let i = 0 , len = rawImages.length ; i < len ; i++ ){
-      var filteredImage = getBase64Data( rawImages[i] );
-      filteredImage.name = i ;
-      filesPromise.push( writeData(filteredImage) );
-    }
+    // for( let i = 0 , len = rawImages.length ; i < len ; i++ ){
+      // var filteredImage = getBase64Data( rawImages[i] );
+      // filteredImage.name = i ;
+      // filesPromise.push( writeData(filteredImage) );
+    // }
+
+    var filteredImage = getBase64Data( fields.horizontal[0] );
+    filteredImage.name = 'horizontal' ;
+    filesPromise.push( writeData(filteredImage) );
+
+    filteredImage = getBase64Data( fields.vertical[0] );
+    filteredImage.name = 'vertical' ;
+    filesPromise.push( writeData(filteredImage) );
+
+      // var filteredImage = getBase64Data( rawImages[i] );
+      // filteredImage.name = i ;
+      // filesPromise.push( writeData(filteredImage) );
+
 
     Promise.all(filesPromise).then(function(values) {
       res.json({ id : counter , status : 'done' });
