@@ -4,7 +4,6 @@ var express = require('express');
 var router = express.Router();
 var multiparty = require('multiparty');
 var fs = require('fs');
-var newPath = "./public/images/";
 
 router.post('/upload',  function (req, res) {
 
