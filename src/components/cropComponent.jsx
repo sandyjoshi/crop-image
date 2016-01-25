@@ -140,12 +140,18 @@ var CropComponent = React.createClass({
         }
     },
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         var context = ReactDOM.findDOMNode(this.refs.canvas).getContext('2d');
         context.clearRect(0, 0, this.props.width, this.props.height);
 
         this.paintCropRect(context);
         this.paintImage(context, this.state.image);
+
+        if( prevState.image != this.state.image ){
+          let croppedImage = this.getCroppedImage();
+          this.props.action(croppedImage);
+        }
+
     },
 
     handleImageReady(image) {
@@ -204,6 +210,8 @@ var CropComponent = React.createClass({
         if (false == this.state.moved) {
             return;
         }
+
+        // ToDo : boundry check for rect.
 
         var pos = this.state.pos;
         var lastPosX = pos.x ;

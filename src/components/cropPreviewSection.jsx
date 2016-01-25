@@ -6,16 +6,11 @@ export default class cropPreviewComponent extends React.Component {
   static propTypes = {
   };
 
-  constructor() {
-    super();
-  };
-
   getCroppedImage(data) {
     return this.refs.cropper.getCroppedImage();
   }
 
   render() {
-
     var styleHorizontal = {
         'width': this.props.cropWidth,
         'height': this.props.cropHeight,
@@ -45,4 +40,3 @@ export default class cropPreviewComponent extends React.Component {
 }
 
 export default cropPreviewComponent;
-
