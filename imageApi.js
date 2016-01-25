@@ -59,13 +59,6 @@ router.post('/upload',  function (req, res) {
   form.parse(req, (err, fields, files) => {
 
     var filesPromise = [];
-    // var rawImages = fields.images[0] ;
-
-    // for( let i = 0 , len = rawImages.length ; i < len ; i++ ){
-      // var filteredImage = getBase64Data( rawImages[i] );
-      // filteredImage.name = i ;
-      // filesPromise.push( writeData(filteredImage) );
-    // }
 
     var filteredImage = getBase64Data( fields.horizontal[0] );
     filteredImage.name = 'horizontal' ;
@@ -75,13 +68,23 @@ router.post('/upload',  function (req, res) {
     filteredImage.name = 'vertical' ;
     filesPromise.push( writeData(filteredImage) );
 
-      // var filteredImage = getBase64Data( rawImages[i] );
-      // filteredImage.name = i ;
-      // filesPromise.push( writeData(filteredImage) );
+    filteredImage = getBase64Data( fields.small_horizontal[0] );
+    filteredImage.name = 'small_horizontal' ;
+    filesPromise.push( writeData(filteredImage) );
 
+    filteredImage = getBase64Data( fields.gallery[0] );
+    filteredImage.name = 'gallery' ;
+    filesPromise.push( writeData(filteredImage) );
 
     Promise.all(filesPromise).then(function(values) {
-      res.json({ id : counter , status : 'done' });
+      let prefix = '/uploadedImages/' + counter ;
+      res.json({
+        id : counter ,
+        vertical :  prefix + '/vertical.png',
+        horizontal : prefix + '/horizontal.png',
+        small_horizontal : prefix + '/small_horizontal.png',
+        gallery : prefix + '/gallery.png',
+      });
       counter++;
     });
 
