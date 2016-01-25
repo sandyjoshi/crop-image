@@ -1,17 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import imageActions from '../actions/image';
 
-import FileUploader from './fileUploader';
+import FileSelector from './fileSelect';
 import CropPreviewSection from './cropPreview';
 
 
 const mapStateToProps = (state) => ({
-
+  selectedUrl : state.image.selectedUrl,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  imageActions : bindActionCreators(imageActions, dispatch)
 });
 
 const previewSize = {
@@ -26,9 +27,6 @@ export default class HomeView extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      src: ''
-    }
   };
 
   render() {
@@ -57,16 +55,16 @@ export default class HomeView extends React.Component {
       <div>
         <header className="app-header">Image Cropping App</header>
         <div className="app-content">
-          <FileUploader />
-          { (this.state.src ) ? (
+          <FileSelector imageActions={this.props.imageActions} />
+          { (this.props.selectedUrl) ? (
             <div>
-              <CropPreviewSection image={ this.state.src } {...horizontal} {...previewSize} />
+              <CropPreviewSection image={ this.props.selectedUrl } {...horizontal} {...previewSize} />
               <hr/>
-              <CropPreviewSection image={ this.state.src } {...vertical} {...previewSize} />
+              <CropPreviewSection image={ this.props.selectedUrl } {...vertical} {...previewSize} />
               <hr/>
-              <CropPreviewSection image={ this.state.src } {...horizontalSmall} {...previewSize} />
+              <CropPreviewSection image={ this.props.selectedUrl } {...horizontalSmall} {...previewSize} />
               <hr/>
-              <CropPreviewSection image={ this.state.src } {...gallery} {...previewSize} />
+              <CropPreviewSection image={ this.props.selectedUrl } {...gallery} {...previewSize} />
             </div>
           ) : (<div/>)
           }
