@@ -16,7 +16,7 @@ router.post('/upload',  function (req, res) {
     data_url = data_url.replace(/^data:image\/jpeg+;base64,/, "");
     data_url = data_url.replace(/ /g, '+');
 
-    fs.writeFile(__dirname + '/public/images/default.png', data_url, 'base64', function(err) {
+    fs.writeFile(__dirname + '/public/default.png', data_url, 'base64', function(err) {
         if(err){
           console.log(err);
         }
