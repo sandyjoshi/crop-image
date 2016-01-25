@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import imageActions from '../actions/image';
 
 import FileSelector from './fileSelect';
-import CropPreviewSection from './cropPreview';
+import CropPreviewSection from './cropPreviewSection';
 
 
 const mapStateToProps = (state) => ({
