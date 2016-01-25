@@ -40,7 +40,7 @@ function writeData(image){
       function() {
         return (new Promise(
           function(resolve, reject) {
-            fs.writeFile( dir + '/' + counter + '/' + image.name + image.ext, image.data, 'base64', function(err) {
+            fs.writeFile( dir + '/' + counter + '/' + image.name + '.png', image.data, 'base64', function(err) {
               if(err){
                 console.log(err);
                 reject();
