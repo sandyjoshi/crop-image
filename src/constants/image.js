@@ -7,4 +7,5 @@ export default createConstants(
   'CROP_VERTICAL',
   'CROP_GALLARY',
   'UPLOAD_IMAGES',
+  'IMAGES_UPLOADED',
 );

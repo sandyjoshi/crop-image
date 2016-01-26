@@ -13,10 +13,15 @@ const mapStateToProps = (state) => ({
   verticalUrl : state.image.verticalUrl,
   horizontalSmallUrl : state.image.horizontalSmallUrl,
   gallaryUrl : state.image.gallaryUrl,
+  pathHorizontal : state.image.pathHorizontal ,
+  pathVertical : state.image.pathVertical ,
+  pathHorizontalSmall : state.image.pathHorizontalSmall ,
+  pathGallary : state.image.pathGallary ,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   imageActions : bindActionCreators(imageActions, dispatch)
+  dispatch: dispatch
 });
 
 const previewSize = {
@@ -76,7 +81,7 @@ export default class HomeView extends React.Component {
     this.props.imageActions.cropGallery(gallery);
     imagesArray.push(this.props.gallaryUrl)
 
-    this.props.imageActions.uploadImage(imagesArray);
+    this.props.imageActions.uploadImage(this.props.dispatch, imagesArray);
   }
 
 
@@ -98,8 +103,15 @@ export default class HomeView extends React.Component {
               <hr/>
               <CropPreviewSection ref="gallery" action={ this.props.imageActions.cropGallery } preview={ this.props.gallaryUrl } image={ this.props.selectedUrl } {...gallery} {...previewSize} />
             </div>
-          ) : (<div/>)
-          }
+          ) : (
+          <div>
+            <div> Uploaded Images </div>
+            <img src={this.props.pathHorizontal} style={styleHorizontal} />
+            <img src={this.props.pathVertical} style={styleHorizontal} />
+            <img src={this.props.pathHorizontalSmall} style={styleHorizontal} />
+            <img src={this.props.pathGallary} style={styleHorizontal} />
+          </div>
+          )}
         </div>
 
       </div>

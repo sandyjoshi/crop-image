@@ -7,6 +7,10 @@ const initialState = {
 	verticalUrl : '',
 	horizontalSmallUrl : '',
   gallaryUrl : '',
+  pathHorizontal : '' ,
+  pathVertical : '' ,
+  pathHorizontalSmall : '' ,
+  pathGallary : '' ,
 };
 
 export default createReducer(initialState, {
@@ -35,10 +39,19 @@ export default createReducer(initialState, {
     });
   },
 
-
   [imageConstants.CROP_GALLARY] : (state, payload) => {
     return Object.assign({}, state, {
       gallaryUrl: payload
+    });
+  },
+
+  [imageConstants.IMAGES_UPLOADED] : (state, payload) => {
+    return Object.assign({}, state, {
+      selectedUrl : '',
+      pathHorizontal : payload.horizontal ,
+      pathVertical : payload.vertical ,
+      pathHorizontalSmall : payload.small_horizontal ,
+      pathGallary : payload.gallery ,
     });
   },
 

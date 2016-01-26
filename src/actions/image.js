@@ -37,9 +37,9 @@ export default {
     };
   },
 
-  uploadImage(imagesArray){
+  uploadImage(dispatch , imagesArray){
 
-    return new Promise((resolve, reject) => {
+    return (new Promise((resolve, reject) => {
 
       let imageFormData = new FormData();
       imageFormData.append('horizontal', imagesArray[0]);
@@ -59,7 +59,14 @@ export default {
       };
 
       xhr.send(imageFormData);
-    });
+    })).then(
+      function(value) {
+        dispatch({
+          type: imageConstants.IMAGES_UPLOADED,
+          payload: value
+        });
+      }
+    );
   }
 
 };
