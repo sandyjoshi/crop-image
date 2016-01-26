@@ -11,10 +11,9 @@ export default class cropPreviewComponent extends React.Component {
   }
 
   render() {
-    var styleHorizontal = {
-        'width': this.props.cropWidth,
-        'height': this.props.cropHeight,
-        verticalAlign : 'top'
+    var previewStyle = {
+      'width': this.props.cropWidth,
+      'height': this.props.cropHeight,
     }
 
     return(
@@ -28,11 +27,9 @@ export default class cropPreviewComponent extends React.Component {
             cropHeight = {this.props.cropHeight}
             action = { this.props.action }
             image={this.props.image} />
-        <div className="crop-details-section">
-          <div className="croped-preview-container">
-            <div className="header">Preview</div>
-            <img src={this.props.preview} style={styleHorizontal} />
-          </div>
+        <div className="croped-preview-container">
+          <div className="header">Preview</div>
+          <img className="crop-preview" src={this.props.preview} style={previewStyle} />
         </div>
       </div>
     )

@@ -106,13 +106,16 @@ export default class HomeView extends React.Component {
                 <div>
                   <div className="line">Images sucessfully uploaded</div>
                   <div className="title line"> horizontal image </div>
-                  <img src={this.props.pathHorizontal} height={horizontal.cropHeight*previewSize.scale} width={horizontal.cropWidth*previewSize.scale}  />
+                  <img className="uploaded-image" src={this.props.pathHorizontal} height={horizontal.cropHeight*previewSize.scale} width={horizontal.cropWidth*previewSize.scale}  />
+                  <hr/>
                   <div className="title line"> Vertical image </div>
-                  <img src={this.props.pathVertical} height={vertical.cropHeight*previewSize.scale} width={vertical.cropWidth*previewSize.scale} />
+                  <img className="uploaded-image" src={this.props.pathVertical} height={vertical.cropHeight*previewSize.scale} width={vertical.cropWidth*previewSize.scale} />
+                  <hr/>
                   <div className="title line"> horizontal small image </div>
-                  <img src={this.props.pathHorizontalSmall} height={horizontalSmall.cropHeight*previewSize.scale} width={horizontalSmall.cropWidth*previewSize.scale} />
+                  <img className="uploaded-image" src={this.props.pathHorizontalSmall} height={horizontalSmall.cropHeight*previewSize.scale} width={horizontalSmall.cropWidth*previewSize.scale} />
+                  <hr/>
                   <div className="title line"> Gallary image </div>
-                  <img src={this.props.pathGallary} height={gallery.cropHeight*previewSize.scale} width={gallery.cropWidth*previewSize.scale} />
+                  <img className="uploaded-image" src={this.props.pathGallary} height={gallery.cropHeight*previewSize.scale} width={gallery.cropWidth*previewSize.scale} />
                 </div>
                 ) : (<div />)
               )
