@@ -58,6 +58,23 @@ var CropComponent = React.createClass({
         }
     },
 
+
+    constructor() {
+        super();
+
+        var attributes = {
+            width: this.props.width,
+            height: this.props.height,
+            style: this.props.style
+        };
+        attributes[deviceEvents.react.down] = this.handleMouseDown;
+        if (isTouchDevice) attributes[deviceEvents.react.mouseDown] = this.handleMouseDown;
+
+        this.attributes = attributes ;
+    };
+
+
+
     getInitialState() {
         return {
             moved: false,
@@ -249,17 +266,7 @@ var CropComponent = React.createClass({
     },
 
     render() {
-
-        var attributes = {
-            width: this.props.width,
-            height: this.props.height,
-            style: this.props.style
-        };
-
-        attributes[deviceEvents.react.down] = this.handleMouseDown;
-        if (isTouchDevice) attributes[deviceEvents.react.mouseDown] = this.handleMouseDown;
-
-        return <canvas ref='canvas' {...attributes} />;
+        return <canvas ref='canvas' {...this.attributes} />;
     }
 });
 
