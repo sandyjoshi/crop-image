@@ -6,11 +6,11 @@ var imageAPI = require('./imageApi');
 
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
-var static_path = path.join(__dirname, 'public');
+var static_path = path.join(__dirname, '/../public');
 
 app.use(express.static(static_path))
   .get('/', function (req, res) {
-    res.sendFile('../index.html', {
+    res.sendFile('index.html', {
       root: static_path
     });
   }).listen(process.env.PORT || 8080, function (err) {
