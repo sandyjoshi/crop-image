@@ -5,7 +5,7 @@ var router = express.Router();
 var multiparty = require('multiparty');
 var fs = require('fs');
 var counter = 1 ;
-var dir = __dirname + '/public/uploadedImages';
+var dir = __dirname + '/../public/uploadedImages';
 
 if (!fs.existsSync(dir)){
   fs.mkdirSync(dir);

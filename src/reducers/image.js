@@ -11,6 +11,7 @@ const initialState = {
   pathVertical : '' ,
   pathHorizontalSmall : '' ,
   pathGallary : '' ,
+  loading : false,
 };
 
 export default createReducer(initialState, {

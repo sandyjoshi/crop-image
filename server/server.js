@@ -21,7 +21,7 @@ app.use(express.static(static_path))
 app.use('/image', imageAPI);
 
 if (isDevelopment) {
-  var config = require('./webpack.config');
+  var config = require('../webpack.config');
   var WebpackDevServer = require('webpack-dev-server');
 
   new WebpackDevServer(webpack(config), {
