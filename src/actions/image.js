@@ -55,7 +55,7 @@ export default {
 
         xhr.onload = function () {
           if (this.status == 200) {
-            resolve(this.response);
+            resolve( JSON.parse( this.response));
           } else {
             reject(this.statusText);
           }
