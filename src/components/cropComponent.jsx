@@ -58,7 +58,6 @@ var CropComponent = React.createClass({
         }
     },
 
-
     constructor() {
         super();
 
@@ -71,9 +70,7 @@ var CropComponent = React.createClass({
         if (isTouchDevice) attributes[deviceEvents.react.mouseDown] = this.handleMouseDown;
 
         this.attributes = attributes ;
-    };
-
-
+    },
 
     getInitialState() {
         return {
