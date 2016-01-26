@@ -46,6 +46,12 @@ export default createReducer(initialState, {
     });
   },
 
+  [imageConstants.UPLOAD_IMAGES] : (state, payload) => {
+    return Object.assign({}, state, {
+      loading: true
+    });
+  },
+
   [imageConstants.IMAGES_UPLOADED] : (state, payload) => {
     return Object.assign({}, state, {
       selectedUrl : '',
@@ -53,6 +59,7 @@ export default createReducer(initialState, {
       pathVertical : payload.vertical ,
       pathHorizontalSmall : payload.small_horizontal ,
       pathGallary : payload.gallery ,
+      loading : false
     });
   },
 

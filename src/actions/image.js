@@ -58,8 +58,12 @@ export default {
             reject(this.statusText);
           }
         };
-
         xhr.send(imageFormData);
+
+        dispatch({
+          type: imageConstants.UPLOAD_IMAGES
+        });
+
       })).then(
         function(value) {
           dispatch({
