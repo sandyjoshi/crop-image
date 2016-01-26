@@ -71,28 +71,33 @@ var CropComponent = React.createClass({
     },
 
     getCroppedImage(type, quality) {
-        var dom = document.createElement('canvas');
-        var context = dom.getContext('2d');
+        var cropCanvas = document.createElement('canvas');
+        var context = cropCanvas.getContext('2d');
 
         // clone canvas
-        var mainCanvas = document.createElement('canvas');
-        mainCanvas.width = this.props.width ;
-        mainCanvas.height = this.props.height;
-        var contextMain = mainCanvas.getContext('2d');
-        contextMain.clearRect(0, 0, this.props.width, this.props.height);
-        this.paintImage( contextMain , this.state.image );
+        var fullHeight = this.props.height * this.props.scale;
+        var fullWidth = this.props.width * this.props.scale;
 
-        dom.width = this.props.cropWidth * this.props.scale;
-        dom.height = this.props.cropHeight * this.props.scale;
+        var fullCanvas = document.createElement('canvas');
+        fullCanvas.width = fullWidth ;
+        fullCanvas.height = fullHeight ;
+        var contextFull = fullCanvas.getContext('2d');
+        contextFull.clearRect(0, 0, fullWidth, fullHeight);
+        this.paintImage( contextFull , this.state.image );
+
+        var cropWidth = this.props.cropWidth * this.props.scale;
+        var cropHeight = this.props.cropHeight * this.props.scale;
+        cropCanvas.width = cropWidth;
+        cropCanvas.height = cropHeight;
 
         context.save();
-        context.drawImage(mainCanvas,
-            this.state.pos.x, this.state.pos.y, this.props.cropWidth , this.props.cropHeight ,
-            0, 0, this.props.cropWidth * this.props.scale, this.props.scale * this.props.cropHeight
+        context.drawImage(fullCanvas,
+            this.state.pos.x , this.state.pos.y , this.props.cropWidth , this.props.cropHeight ,
+            0, 0, cropWidth, cropHeight
         );
         context.restore();
 
-        return dom.toDataURL(type, quality);
+        return cropCanvas.toDataURL(type, quality);
     },
 
     // ToDo : shift to utills

@@ -4,6 +4,16 @@ var express = require('express');
 var router = express.Router();
 var multiparty = require('multiparty');
 var fs = require('fs');
+
+
+var cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: 'dpwbq4bwh',
+  api_key: '397198521526215',
+  api_secret: 'O4oqZFx9_6JsZPutM3D2vbFrkrc'
+});
+
+
 var counter = 1 ;
 var dir = __dirname + '/../public/uploadedImages';
 
