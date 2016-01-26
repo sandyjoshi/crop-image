@@ -105,10 +105,10 @@ export default class HomeView extends React.Component {
           ) : (
           <div>
             <div> Uploaded Images </div>
-            <img src={this.props.pathHorizontal} style={styleHorizontal} />
-            <img src={this.props.pathVertical} style={styleHorizontal} />
-            <img src={this.props.pathHorizontalSmall} style={styleHorizontal} />
-            <img src={this.props.pathGallary} style={styleHorizontal} />
+            <img src={this.props.pathHorizontal} height={horizontal.cropHeight} width={horizontal.cropWidth}  />
+            <img src={this.props.pathVertical} height={vertical.cropHeight} width={vertical.cropWidth} />
+            <img src={this.props.pathHorizontalSmall} height={horizontalSmall.cropHeight} width={horizontalSmall.cropWidth} />
+            <img src={this.props.pathGallary} height={gallery.cropHeight} width={gallery.cropWidth} />
           </div>
           )}
         </div>
