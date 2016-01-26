@@ -8,10 +8,6 @@ export default class cropPreviewComponent extends React.Component {
 
   constructor() {
     super();
-    this.previewStyle = {
-      'width': this.props.cropWidth,
-      'height': this.props.cropHeight,
-    }
   };
 
   getCroppedImage(data) {
@@ -19,6 +15,12 @@ export default class cropPreviewComponent extends React.Component {
   }
 
   render() {
+
+    var previewStyle = {
+     'width': this.props.cropWidth,
+     'height': this.props.cropHeight,
+    }
+
     return(
       <div>
         <CropComponent
@@ -32,7 +34,7 @@ export default class cropPreviewComponent extends React.Component {
             image={this.props.image} />
         <div className="croped-preview-container">
           <div className="header">Preview</div>
-          <img className="crop-preview" src={this.props.preview} style={this.previewStyle} />
+          <img className="crop-preview" src={this.props.preview} style={previewStyle} />
         </div>
       </div>
     )
