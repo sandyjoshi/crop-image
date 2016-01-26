@@ -29,14 +29,12 @@ export default {
     };
   },
 
-
   cropGallery(url) {
     return {
       type: imageConstants.CROP_GALLARY,
       payload: url
     };
   },
-
 
   uploadImage(imagesArray) {
 

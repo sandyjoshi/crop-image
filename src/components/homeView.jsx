@@ -91,9 +91,9 @@ export default class HomeView extends React.Component {
         <header className="app-header">Image Cropping App</header>
         <div className="app-content">
           <FileSelector imageActions={this.props.imageActions} />
-          <input type="button" onClick={this.handleUpload} value="Crop & Upload" />
           { (this.props.selectedUrl) ? (
             <div>
+              <input className="line" type="button" onClick={this.handleUpload} value="Crop & Upload" />
               <CropPreviewSection ref="horizontal" action={ this.props.imageActions.cropHorizontal } preview={ this.props.horizontalUrl } image={ this.props.selectedUrl } {...horizontal} {...previewSize} />
               <hr/>
               <CropPreviewSection ref="vertical" action={ this.props.imageActions.cropVertical } preview={ this.props.verticalUrl } image={ this.props.selectedUrl } {...vertical} {...previewSize} />
@@ -102,15 +102,21 @@ export default class HomeView extends React.Component {
               <hr/>
               <CropPreviewSection ref="gallery" action={ this.props.imageActions.cropGallery } preview={ this.props.gallaryUrl } image={ this.props.selectedUrl } {...gallery} {...previewSize} />
             </div>
-          ) : (
-          <div>
-            <div> Uploaded Images </div>
-            <img src={this.props.pathHorizontal} height={horizontal.cropHeight} width={horizontal.cropWidth}  />
-            <img src={this.props.pathVertical} height={vertical.cropHeight} width={vertical.cropWidth} />
-            <img src={this.props.pathHorizontalSmall} height={horizontalSmall.cropHeight} width={horizontalSmall.cropWidth} />
-            <img src={this.props.pathGallary} height={gallery.cropHeight} width={gallery.cropWidth} />
-          </div>
-          )}
+          ) : ( (this.props.pathHorizontal || this.props.pathVertical || this.props.pathHorizontalSmall || this.props.pathGallary) ? (
+                <div>
+                  <div className="line">Images sucessfully uploaded</div>
+                  <div className="title line"> horizontal image </div>
+                  <img src={this.props.pathHorizontal} height={horizontal.cropHeight*previewSize.scale} width={horizontal.cropWidth*previewSize.scale}  />
+                  <div className="title line"> Vertical image </div>
+                  <img src={this.props.pathVertical} height={vertical.cropHeight*previewSize.scale} width={vertical.cropWidth*previewSize.scale} />
+                  <div className="title line"> horizontal small image </div>
+                  <img src={this.props.pathHorizontalSmall} height={horizontalSmall.cropHeight*previewSize.scale} width={horizontalSmall.cropWidth*previewSize.scale} />
+                  <div className="title line"> Gallary image </div>
+                  <img src={this.props.pathGallary} height={gallery.cropHeight*previewSize.scale} width={gallery.cropWidth*previewSize.scale} />
+                </div>
+                ) : (<div />)
+              )
+        }
         </div>
 
       </div>
