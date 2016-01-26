@@ -90,6 +90,7 @@ export default class HomeView extends React.Component {
       <div>
         <header className="app-header">Image Cropping App</header>
         <div className="app-content">
+          <div className="line">Select image, adjust crop area and upload.</div>
           <FileSelector imageActions={this.props.imageActions} />
           { (this.props.selectedUrl) ? (
             <div>
