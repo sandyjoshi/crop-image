@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  imageActions : bindActionCreators(imageActions, dispatch)
+  imageActions : bindActionCreators(imageActions, dispatch),
   dispatch: dispatch
 });
 
@@ -67,23 +67,22 @@ export default class HomeView extends React.Component {
 
     let horizontal = this.refs.horizontal.getCroppedImage();
     this.props.imageActions.cropHorizontal(horizontal);
-    imagesArray.push(this.props.horizontalUrl)
+    imagesArray.push(this.props.horizontalUrl);
 
     let vertical = this.refs.vertical.getCroppedImage();
     this.props.imageActions.cropVertical(vertical);
-    imagesArray.push(this.props.verticalUrl)
+    imagesArray.push(this.props.verticalUrl);
 
     let smallHorizontal = this.refs.smallHorizontal.getCroppedImage();
     this.props.imageActions.cropSmallHorizontal(smallHorizontal);
-    imagesArray.push(this.props.horizontalSmallUrl)
+    imagesArray.push(this.props.horizontalSmallUrl);
 
     let gallery = this.refs.gallery.getCroppedImage();
     this.props.imageActions.cropGallery(gallery);
-    imagesArray.push(this.props.gallaryUrl)
+    imagesArray.push(this.props.gallaryUrl);
 
     this.props.imageActions.uploadImage(this.props.dispatch, imagesArray);
   }
-
 
   render() {
 
