@@ -81,7 +81,7 @@ export default class HomeView extends React.Component {
     this.props.imageActions.cropGallery(gallery);
     imagesArray.push(this.props.gallaryUrl);
 
-    this.props.imageActions.uploadImage(this.props.dispatch, imagesArray);
+    this.props.imageActions.uploadImage( imagesArray);
   }
 
   render() {
