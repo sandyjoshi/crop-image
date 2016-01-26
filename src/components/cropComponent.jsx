@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-// ToDo : utils
+// ToDo : shift to utills
 var isTouchDevice =
     !!(typeof window !== 'undefined' &&
        typeof navigator !== 'undefined' &&
@@ -95,7 +95,7 @@ var CropComponent = React.createClass({
         return dom.toDataURL(type, quality);
     },
 
-    // ToDo : utils
+    // ToDo : shift to utills
     isDataURL(str) {
         var regex = /^\s*data:([a-z]+\/[a-z]+(;[a-z\-]+\=[a-z\-]+)?)?(;base64)?,[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%\s]*\s*$/i;
         return !!str.match(regex);
@@ -151,7 +151,6 @@ var CropComponent = React.createClass({
           let croppedImage = this.getCroppedImage();
           this.props.action(croppedImage);
         }
-
     },
 
     handleImageReady(image) {
@@ -211,8 +210,7 @@ var CropComponent = React.createClass({
             return;
         }
 
-        // ToDo : boundry check for rect.
-
+        // ToDo : boundry check for rect only.
         var pos = this.state.pos;
         var lastPosX = pos.x ;
         var lastPosY = pos.y ;
@@ -225,7 +223,7 @@ var CropComponent = React.createClass({
         if (this.state.mx && this.state.my) {
             var xDiff = (this.state.mx - mousePositionX) ;
             var yDiff = (this.state.my - mousePositionY) ;
-            // ToDo : boundry condition function
+            // ToDo : boundry condition move to seprate function
             var newY = lastPosY - yDiff ;
             if( newY < 1 ) {
                 newY = 1 ;
@@ -234,7 +232,7 @@ var CropComponent = React.createClass({
             }
             pos.y = newY;
 
-            // ToDo : boundry condition function
+            // ToDo : boundry condition move to seprate function
             var newX = lastPosX - xDiff ;
             if( newX < 1 ) {
                 newX = 1 ;

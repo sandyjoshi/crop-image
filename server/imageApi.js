@@ -11,7 +11,7 @@ if (!fs.existsSync(dir)){
   fs.mkdirSync(dir);
 }
 
-// ToDo : utills
+// ToDo : shift to utills
 function getBase64Data( url ){
   var matches = url.match(/^data:.+\/(.+);base64,(.*)$/);
   var ext = matches[1];
