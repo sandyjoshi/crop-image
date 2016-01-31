@@ -4,7 +4,7 @@ var webpack = require('webpack');
 var app = express();
 var imageAPI = require('./imageApi');
 
-require('cloudinaryConfig');
+require('./cloudinaryConfig');
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 var static_path = path.join(__dirname, '/../public');
